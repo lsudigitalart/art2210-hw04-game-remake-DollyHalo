@@ -17,6 +17,39 @@ function setup() {
   colorMode(HSB, 360, 100, 100); // 🎨 use HSB color mode
   collectibleColor = color(random(360), 100, 100);
 }
+let spiralRotation = 0; // keeps track of spinning
+
+function drawPlayer(x, y, size, hue, saturation) {
+  push();
+  translate(x, y);
+  rotate(spiralRotation); // spin the spiral
+
+  // base circle
+  noStroke();
+  fill(hue, saturation, 100);
+  circle(0, 0, size);
+
+  // complementary spiral
+  let complementaryHue = (hue + 180) % 360;
+  stroke(complementaryHue, 80, 80);
+  noFill();
+
+  beginShape();
+  for (let a = 0; a < TWO_PI * 3; a += 0.1) { // 3 spiral turns
+    let r = map(a, 0, TWO_PI * 6, 0, size / 1);
+    let sx = r * cos(a);
+    let sy = r * sin(a);
+    vertex(sx, sy);
+  }
+  endShape();
+
+  pop();
+
+  // spin speed
+  spiralRotation += 0.03;
+}
+
+
 
 function draw() {
   // 🎨 Map PLAYER position to colors
@@ -52,8 +85,8 @@ function draw() {
   }
 
   // 🎨 Player color = based on its position
-  fill(playerHue, playerSaturation, 100);
-  circle(playerX, playerY, playerSize);
+drawPlayer(playerX, playerY, playerSize, playerHue, playerSaturation);
+
 
   // 🎨 Collectible color stays random
   fill(collectibleColor);
