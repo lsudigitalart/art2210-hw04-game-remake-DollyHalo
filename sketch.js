@@ -130,6 +130,7 @@ function keyPressed() {
     gameTime = 0;
     playerX = 400;
     playerY = 300;
+    playerSize = 30;  //resets player size
     collectibleX = 600;
     collectibleY = 200;
     collectibleColor = color(random(360), 100, 100);
