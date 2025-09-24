@@ -12,6 +12,13 @@ let score = 0;
 let gameTime = 0;
 let timeLimit = 1800; // 30 seconds at 60fps
 
+let fontRegular;
+function preload() {
+  fontRegular = loadFont('Anton-Regular.ttf');
+ 
+}
+
+
 function setup() {
   createCanvas(800, 600);
   colorMode(HSB, 360, 100, 100); // 🎨 use HSB color mode
@@ -93,6 +100,7 @@ drawPlayer(playerX, playerY, playerSize, playerHue, playerSaturation);
   circle(collectibleX, collectibleY, collectibleSize);
 
   // UI
+  textFont(fontRegular)
   fill(0, 0, 0); // black text
   textSize(20);
   text("Score: " + score, 20, 30);
