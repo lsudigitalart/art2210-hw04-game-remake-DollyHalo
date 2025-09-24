@@ -101,7 +101,7 @@ drawPlayer(playerX, playerY, playerSize, playerHue, playerSaturation);
   text("Time: " + timeLeft.toFixed(1), 20, 60);
 
   textSize(14);
-  text("Player color follows position, background = complementary", 20, height - 20);
+  text("Keep Munchin To Beat Your High Score!!!", 20, height - 20);
 }
 
 function drawGameOver() {
